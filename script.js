@@ -1,4 +1,4 @@
-// Create Particles
+// Generate floating background particles
 function createParticles() {
     const container = document.getElementById('particles');
     if (!container) return;
@@ -16,7 +16,7 @@ function createParticles() {
     }
 }
 
-// Navbar Scroll Effect
+// Add background blur to navbar on scroll
 const navbar = document.getElementById('navbar');
 if (navbar) {
     window.addEventListener('scroll', () => {
@@ -28,7 +28,7 @@ if (navbar) {
     });
 }
 
-// Scroll Reveal Animation
+// Fade in sections when scrolling
 const observerOptions = {
     threshold: 0.1,
     rootMargin: '0px 0px -100px 0px'
@@ -39,7 +39,7 @@ const observer = new IntersectionObserver((entries) => {
         if (entry.isIntersecting) {
             entry.target.classList.add('visible');
             
-            // Animate skill bars when skills section becomes visible
+            // Trigger skill bar animation
             if (entry.target.id === 'skills') {
                 animateSkillBars();
             }
@@ -51,7 +51,7 @@ document.querySelectorAll('section').forEach(section => {
     observer.observe(section);
 });
 
-// Animate Skill Bars
+// 5 second skill bar loading animation
 function animateSkillBars() {
     const skillBars = document.querySelectorAll('.skill-fill');
     
@@ -66,7 +66,7 @@ function animateSkillBars() {
     });
 }
 
-// Animate stat numbers when they come into view
+// Fade in stat cards with stagger effect
 const statObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -92,7 +92,7 @@ if (aboutSection) {
     statObserver.observe(aboutSection);
 }
 
-// Back to Top Button
+// Show/hide back to top button
 const backToTop = document.getElementById('backToTop');
 if (backToTop) {
     window.addEventListener('scroll', () => {
@@ -104,7 +104,7 @@ if (backToTop) {
     });
 }
 
-// Smooth Scroll for Navigation
+// Enable smooth scrolling for anchor links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
@@ -118,11 +118,11 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Initialize
+// Run when page loads
 document.addEventListener('DOMContentLoaded', () => {
     createParticles();
     
-    // Flip Card Functionality
+    // Interactive flip cards for stat explanations
     const flipCards = document.querySelectorAll('.flip-card');
     
     flipCards.forEach(card => {
@@ -130,7 +130,7 @@ document.addEventListener('DOMContentLoaded', () => {
             card.classList.toggle('flipped');
         });
         
-        // Add keyboard accessibility
+        // Keyboard support for accessibility
         card.addEventListener('keydown', (e) => {
             if (e.key === 'Enter' || e.key === ' ') {
                 e.preventDefault();
@@ -138,7 +138,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
         
-        // Make cards focusable for accessibility
+        // Tab navigation support
         card.setAttribute('tabindex', '0');
         card.setAttribute('role', 'button');
         card.setAttribute('aria-label', 'Click to flip card and see details');
