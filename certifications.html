@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certifications | Montell Boks</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .cert-card {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cert-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(37, 99, 235, 0.1), transparent);
+            transform: rotate(45deg);
+            transition: all 0.5s;
+        }
+
+        .cert-card:hover::before {
+            left: 100%;
+        }
+
+        .cert-card:hover {
+            transform: translateY(-10px) rotate(2deg);
+            border-color: var(--primary);
+            box-shadow: 0 15px 40px rgba(37, 99, 235, 0.3);
+        }
+
+        .cert-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            transition: transform 0.3s;
+        }
+
+        .cert-card:hover .cert-icon {
+            transform: scale(1.2) rotate(10deg);
+        }
+
+        .cert-card h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .cert-card .cert-org {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .cert-card .cert-date {
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Particle Background -->
+    <div id="particles"></div>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="container">
+            <div class="logo">MTB</div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="skills.html">Skills</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="certifications.html" class="active">Certifications</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Certifications Section -->
+    <section style="padding-top: 120px;">
+        <h2 class="section-title">Certifications & Education</h2>
+        <p class="section-subtitle">Continuous learning and professional development</p>
+        <div class="cert-grid">
+            <div class="cert-card">
+                <div class="cert-icon">🏆</div>
+                <h3>Microsoft Certified: Azure AI Fundamentals</h3>
+                <div class="cert-org">Microsoft</div>
+                <div class="cert-date">September 2025</div>
+            </div>
+            <div class="cert-card">
+                <div class="cert-icon">💻</div>
+                <h3>Foundational C# with Microsoft</h3>
+                <div class="cert-org">FreeCodeCamp</div>
+                <div class="cert-date">June 2025</div>
+            </div>
+            <div class="cert-card">
+                <div class="cert-icon">🎓</div>
+                <h3>Multi-Platform Software Developer</h3>
+                <div class="cert-org">University of Western Cape</div>
+                <div class="cert-date">2025 - Present</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Montell Tyrique Boks. Built with passion and lots of coffee ☕</p>
+        <p>Designed & Developed in Cape Town, South Africa 🇿🇦</p>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top" id="backToTop">↑</a>
+
+    <script src="script.js"></script>
+</body>
+</html>
