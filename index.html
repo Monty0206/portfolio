@@ -554,7 +554,12 @@
                         <p>Available for opportunities</p>
                     </div>
                 </div>
-                <form class="contact-form" action="https://formspree.io/f/mjkaeoqw" method="POST">
+                <form class="contact-form" action="https://api.web3forms.com/submit" method="POST">
+                    <input type="hidden" name="access_key" value="6c100b3e-ce7e-4e61-8cc2-8bdea451c0cc">
+                    <input type="hidden" name="subject" value="New Portfolio Contact from Website">
+                    <input type="hidden" name="from_name" value="Portfolio Contact Form">
+                    <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+
                     <div class="form-group">
                         <label for="name">Your Name</label>
                         <input type="text" id="name" name="name" required>
