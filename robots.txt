@@ -1,3 +1,0 @@
-User-agent: *
-Allow: /
-Sitemap: https://calm-dune-0801d2110.1.azurestaticapps.net/sitemap.xml
