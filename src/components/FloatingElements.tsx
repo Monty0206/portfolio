@@ -2,19 +2,19 @@ import { motion } from "framer-motion";
 
 export const FloatingElements = () => {
   return (
-    <div className="fixed inset-0 pointer-events-none overflow-hidden z-0 hidden md:block">
-      {/* Large gradient orb */}
+    <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
+      {/* Large gradient orb - visible on all devices */}
       <motion.div
-        className="absolute w-[300px] md:w-[400px] lg:w-[600px] h-[300px] md:h-[400px] lg:h-[600px] rounded-full"
+        className="absolute w-[250px] sm:w-[400px] lg:w-[600px] h-[250px] sm:h-[400px] lg:h-[600px] rounded-full"
         style={{
-          background: "radial-gradient(circle, hsl(var(--primary) / 0.15), transparent 70%)",
-          top: "10%",
-          left: "5%",
+          background: "radial-gradient(circle, hsl(var(--primary) / 0.12), transparent 70%)",
+          top: "5%",
+          left: "-5%",
         }}
         animate={{
-          x: [0, 50, 0],
-          y: [0, 30, 0],
-          scale: [1, 1.1, 1],
+          x: [0, 30, 0],
+          y: [0, 20, 0],
+          scale: [1, 1.05, 1],
         }}
         transition={{
           duration: 20,
@@ -23,18 +23,18 @@ export const FloatingElements = () => {
         }}
       />
 
-      {/* Accent orb */}
+      {/* Accent orb - visible on all devices */}
       <motion.div
-        className="absolute w-[200px] md:w-[300px] lg:w-[400px] h-[200px] md:h-[300px] lg:h-[400px] rounded-full"
+        className="absolute w-[200px] sm:w-[300px] lg:w-[400px] h-[200px] sm:h-[300px] lg:h-[400px] rounded-full"
         style={{
-          background: "radial-gradient(circle, hsl(var(--accent) / 0.1), transparent 70%)",
-          bottom: "20%",
-          right: "10%",
+          background: "radial-gradient(circle, hsl(var(--accent) / 0.08), transparent 70%)",
+          bottom: "10%",
+          right: "-5%",
         }}
         animate={{
-          x: [0, -40, 0],
-          y: [0, -50, 0],
-          scale: [1, 1.2, 1],
+          x: [0, -20, 0],
+          y: [0, -30, 0],
+          scale: [1, 1.1, 1],
         }}
         transition={{
           duration: 15,
@@ -44,7 +44,7 @@ export const FloatingElements = () => {
         }}
       />
 
-      {/* Floating particles - only show on larger screens */}
+      {/* Floating particles - hidden on mobile for performance */}
       {[...Array(6)].map((_, i) => (
         <motion.div
           key={i}

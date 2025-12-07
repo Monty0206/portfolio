@@ -15,23 +15,33 @@ export const AnimatedCounter = ({
   duration = 2,
 }: AnimatedCounterProps) => {
   const ref = useRef<HTMLSpanElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const [hasAnimated, setHasAnimated] = useState(false);
-
-  const spring = useSpring(0, { duration: duration * 1000 });
-  const display = useTransform(spring, (current) => Math.round(current));
+  const isInView = useInView(ref, { once: true, amount: 0.3 });
+  const [displayValue, setDisplayValue] = useState(0);
 
   useEffect(() => {
-    if (isInView && !hasAnimated) {
-      spring.set(value);
-      setHasAnimated(true);
+    if (isInView) {
+      // Animate the counter
+      const startTime = Date.now();
+      const endTime = startTime + duration * 1000;
+      
+      const updateValue = () => {
+        const now = Date.now();
+        const progress = Math.min((now - startTime) / (duration * 1000), 1);
+        const currentValue = Math.round(progress * value);
+        setDisplayValue(currentValue);
+        
+        if (progress < 1) {
+          requestAnimationFrame(updateValue);
+        }
+      };
+      
+      requestAnimationFrame(updateValue);
     }
-  }, [isInView, value, spring, hasAnimated]);
+  }, [isInView, value, duration]);
 
   return (
     <span ref={ref} className={className}>
-      <motion.span>{display}</motion.span>
-      {suffix}
+      {displayValue}{suffix}
     </span>
   );
 };
