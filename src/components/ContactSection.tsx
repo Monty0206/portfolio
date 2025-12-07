@@ -40,15 +40,47 @@ export const ContactSection = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json",
+        },
+        body: JSON.stringify({
+          access_key: "6c100b3e-ce7e-4e61-8cc2-8bdea451c0cc",
+          name: formData.name,
+          email: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+          from_name: "Portfolio Contact Form",
+        }),
+      });
 
-    toast({
-      title: "Message sent!",
-      description: "Thank you for reaching out. I'll get back to you soon.",
-    });
+      const result = await response.json();
 
-    setFormData({ name: "", email: "", subject: "", message: "" });
-    setIsSubmitting(false);
+      if (result.success) {
+        toast({
+          title: "Message sent!",
+          description: "Thank you for reaching out. I'll get back to you soon.",
+        });
+        setFormData({ name: "", email: "", subject: "", message: "" });
+      } else {
+        toast({
+          title: "Error",
+          description: "Something went wrong. Please email me directly at montellboks@gmail.com",
+          variant: "destructive",
+        });
+      }
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Something went wrong. Please email me directly at montellboks@gmail.com",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -151,7 +183,6 @@ export const ContactSection = () => {
                     onBlur={() => setFocusedField(null)}
                     required
                     className={inputClasses("name")}
-                    
                   />
                 </motion.div>
                 <motion.div
@@ -172,7 +203,6 @@ export const ContactSection = () => {
                     onBlur={() => setFocusedField(null)}
                     required
                     className={inputClasses("email")}
-                    
                   />
                 </motion.div>
               </div>
@@ -195,7 +225,6 @@ export const ContactSection = () => {
                   onBlur={() => setFocusedField(null)}
                   required
                   className={inputClasses("subject")}
-                  
                 />
               </motion.div>
 
@@ -217,7 +246,6 @@ export const ContactSection = () => {
                   required
                   rows={5}
                   className={`${inputClasses("message")} resize-none`}
-                  
                 />
               </motion.div>
 
