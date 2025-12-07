@@ -151,7 +151,7 @@ export const ContactSection = () => {
                     onBlur={() => setFocusedField(null)}
                     required
                     className={inputClasses("name")}
-                    placeholder="John Doe"
+                    
                   />
                 </motion.div>
                 <motion.div
@@ -172,7 +172,7 @@ export const ContactSection = () => {
                     onBlur={() => setFocusedField(null)}
                     required
                     className={inputClasses("email")}
-                    placeholder="john@example.com"
+                    
                   />
                 </motion.div>
               </div>
@@ -195,7 +195,7 @@ export const ContactSection = () => {
                   onBlur={() => setFocusedField(null)}
                   required
                   className={inputClasses("subject")}
-                  placeholder="Let's discuss a project"
+                  
                 />
               </motion.div>
 
@@ -217,7 +217,7 @@ export const ContactSection = () => {
                   required
                   rows={5}
                   className={`${inputClasses("message")} resize-none`}
-                  placeholder="Tell me about your project..."
+                  
                 />
               </motion.div>
 
