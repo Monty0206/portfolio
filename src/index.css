@@ -41,10 +41,10 @@
     --gradient-accent: linear-gradient(135deg, hsl(45 100% 60%), hsl(30 100% 55%));
     --gradient-glass: linear-gradient(135deg, hsl(220 20% 15% / 0.8), hsl(220 20% 10% / 0.6));
     --gradient-hero: radial-gradient(ellipse 80% 50% at 50% -20%, hsl(175 80% 50% / 0.15), transparent);
-    
+
     --shadow-glow: 0 0 60px hsl(175 80% 50% / 0.2);
     --shadow-card: 0 25px 50px -12px hsl(220 30% 5% / 0.5);
-    
+
     --font-display: 'Syne', sans-serif;
     --font-body: 'DM Sans', sans-serif;
 
@@ -62,19 +62,31 @@
 @layer base {
   * {
     @apply border-border;
+    -webkit-tap-highlight-color: transparent;
   }
 
   html {
     scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
   }
 
   body {
     @apply bg-background text-foreground font-body antialiased;
     font-feature-settings: "rlig" 1, "calt" 1;
+    overflow-x: hidden;
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
   }
 
   ::selection {
     @apply bg-primary/30 text-foreground;
+  }
+
+  /* Better touch targets for mobile */
+  @media (max-width: 768px) {
+    button, a, input, textarea, select {
+      min-height: 44px;
+    }
   }
 }
 
@@ -117,7 +129,7 @@
   .grain {
     position: relative;
   }
-  
+
   .grain::before {
     content: '';
     position: absolute;
@@ -131,7 +143,7 @@
   /* Glass card effect */
   .glass-card {
     @apply bg-card/60 backdrop-blur-xl border border-border/50 rounded-2xl;
-    box-shadow: 
+    box-shadow:
       0 25px 50px -12px hsl(220 30% 5% / 0.4),
       inset 0 1px 0 0 hsl(60 20% 95% / 0.05);
   }
@@ -140,12 +152,12 @@
   .hover-underline {
     @apply relative;
   }
-  
+
   .hover-underline::after {
     content: '';
     @apply absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300;
   }
-  
+
   .hover-underline:hover::after {
     @apply w-full;
   }
@@ -225,5 +237,109 @@
     @apply h-full rounded-full;
     background: var(--gradient-primary);
     transition: width 1s ease-out;
+  }
+
+  /* Container responsive padding */
+  .container {
+    @apply px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Safe area insets for notched devices */
+  .safe-top {
+    padding-top: env(safe-area-inset-top);
+  }
+
+  .safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  /* Hide on touch devices */
+  @media (hover: none) and (pointer: coarse) {
+    .no-touch {
+      display: none !important;
+    }
+  }
+
+  /* Reduce motion for accessibility */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+/* Responsive typography */
+@layer base {
+  h1 {
+    @apply text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl;
+  }
+
+  h2 {
+    @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl;
+  }
+
+  h3 {
+    @apply text-xl sm:text-2xl md:text-3xl;
+  }
+
+  p {
+    @apply text-sm sm:text-base;
+  }
+}
+
+/* Mobile-specific improvements */
+@media (max-width: 640px) {
+  .glass-card {
+    @apply rounded-xl;
+  }
+
+  section {
+    @apply py-16;
+  }
+}
+
+/* Tablet improvements */
+@media (min-width: 641px) and (max-width: 1024px) {
+  section {
+    @apply py-24;
+  }
+}
+
+/* Large screen / TV improvements */
+@media (min-width: 1920px) {
+  .container {
+    max-width: 1600px;
+  }
+
+  h1 {
+    @apply text-8xl;
+  }
+
+  h2 {
+    @apply text-6xl;
+  }
+
+  p {
+    @apply text-lg;
+  }
+}
+
+@media (min-width: 2560px) {
+  .container {
+    max-width: 2000px;
+  }
+
+  h1 {
+    @apply text-9xl;
+  }
+
+  h2 {
+    @apply text-7xl;
+  }
+
+  p {
+    @apply text-xl;
   }
 }

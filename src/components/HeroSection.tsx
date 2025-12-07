@@ -40,7 +40,7 @@ export const HeroSection = () => {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden px-4"
     >
       {/* Animated background gradient */}
       <motion.div
@@ -58,14 +58,14 @@ export const HeroSection = () => {
         }}
       />
 
-      <div className="container mx-auto px-6 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 relative z-10">
         <div className="max-w-5xl mx-auto text-center">
           {/* Status badge */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary/80 border border-border/50 text-sm mb-8"
+            className="inline-flex items-center gap-2 px-3 sm:px-4 py-2 rounded-full bg-secondary/80 border border-border/50 text-xs sm:text-sm mb-6 sm:mb-8"
           >
             <motion.span
               className="w-2 h-2 rounded-full bg-green-400"
@@ -77,7 +77,7 @@ export const HeroSection = () => {
 
           {/* Main heading with stagger */}
           <motion.h1
-            className="font-display font-bold text-5xl sm:text-6xl md:text-7xl lg:text-8xl leading-[1.1] mb-6"
+            className="font-display font-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl leading-[1.1] mb-4 sm:mb-6"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
@@ -86,6 +86,7 @@ export const HeroSection = () => {
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
+              className="block sm:inline"
             >
               Hi, I'm{" "}
             </motion.span>
@@ -97,9 +98,9 @@ export const HeroSection = () => {
             >
               Montell
             </motion.span>
-            <br />
+            <br className="hidden sm:block" />
             <motion.span
-              className="text-muted-foreground"
+              className="text-muted-foreground block sm:inline text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl"
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.5 }}
@@ -110,26 +111,26 @@ export const HeroSection = () => {
 
           {/* Role with typewriter */}
           <motion.div
-            className="flex items-center justify-center gap-3 mb-8"
+            className="flex items-center justify-center gap-2 sm:gap-3 mb-6 sm:mb-8"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.6 }}
           >
-            <Sparkles className="w-5 h-5 text-accent" />
-            <p className="font-display text-xl sm:text-2xl text-accent font-medium h-8 flex items-center">
+            <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 text-accent" />
+            <p className="font-display text-base sm:text-xl md:text-2xl text-accent font-medium h-7 sm:h-8 flex items-center">
               {displayText}
               <motion.span
-                className="inline-block w-0.5 h-6 bg-accent ml-1"
+                className="inline-block w-0.5 h-5 sm:h-6 bg-accent ml-1"
                 animate={{ opacity: [1, 0] }}
                 transition={{ duration: 0.5, repeat: Infinity }}
               />
             </p>
-            <Sparkles className="w-5 h-5 text-accent" />
+            <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 text-accent" />
           </motion.div>
 
           {/* Description */}
           <motion.p
-            className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto mb-12 leading-relaxed"
+            className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-8 sm:mb-12 leading-relaxed px-4"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.7 }}
@@ -137,46 +138,46 @@ export const HeroSection = () => {
             Microsoft Certified Azure AI Professional specializing in{" "}
             <span className="text-foreground font-medium">C# .NET</span>,{" "}
             <span className="text-foreground font-medium">cloud-native solutions</span>, and{" "}
-            <span className="text-foreground font-medium">intelligent systems</span> that solve real-world problems.
+            <span className="text-foreground font-medium">intelligent systems</span>.
           </motion.p>
 
-          {/* CTA Buttons */}
+          {/* CTA Buttons - Stacked on mobile */}
           <motion.div
-            className="flex flex-wrap items-center justify-center gap-4"
+            className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 px-4"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.8 }}
           >
             <MagneticButton
               href="#projects"
-              className="group flex items-center gap-2 px-8 py-4 rounded-full bg-primary text-primary-foreground font-semibold text-lg hover:shadow-glow transition-all duration-300"
+              className="w-full sm:w-auto group flex items-center justify-center gap-2 px-6 sm:px-8 py-3 sm:py-4 rounded-full bg-primary text-primary-foreground font-semibold text-base sm:text-lg hover:shadow-glow transition-all duration-300"
             >
               View My Work
-              <ArrowDown className="w-5 h-5 group-hover:translate-y-1 transition-transform" />
+              <ArrowDown className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-y-1 transition-transform" />
             </MagneticButton>
 
             <MagneticButton
               href="https://docs.google.com/document/d/your-resume-link/export?format=pdf"
-              className="flex items-center gap-2 px-8 py-4 rounded-full border-2 border-border hover:border-primary/50 font-semibold text-lg transition-all duration-300"
+              className="w-full sm:w-auto flex items-center justify-center gap-2 px-6 sm:px-8 py-3 sm:py-4 rounded-full border-2 border-border hover:border-primary/50 font-semibold text-base sm:text-lg transition-all duration-300"
             >
-              <FileText className="w-5 h-5" />
+              <FileText className="w-4 h-4 sm:w-5 sm:h-5" />
               Resume
             </MagneticButton>
 
             <MagneticButton
               href="#contact"
-              className="flex items-center gap-2 px-8 py-4 rounded-full border-2 border-border hover:border-accent/50 hover:text-accent font-semibold text-lg transition-all duration-300"
+              className="w-full sm:w-auto flex items-center justify-center gap-2 px-6 sm:px-8 py-3 sm:py-4 rounded-full border-2 border-border hover:border-accent/50 hover:text-accent font-semibold text-base sm:text-lg transition-all duration-300"
             >
-              <Mail className="w-5 h-5" />
+              <Mail className="w-4 h-4 sm:w-5 sm:h-5" />
               Contact
             </MagneticButton>
           </motion.div>
         </div>
       </div>
 
-      {/* Animated scroll indicator */}
+      {/* Animated scroll indicator - hidden on mobile */}
       <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-muted-foreground"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex-col items-center gap-2 text-muted-foreground hidden sm:flex"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.2 }}
